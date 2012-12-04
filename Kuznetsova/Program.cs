@@ -15,7 +15,7 @@ namespace Kuznetsova
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainScreen());
+            Application.Run(new Form1());
         }
     }
 }
