@@ -1,6 +1,6 @@
 ﻿namespace Kuznetsova
 {
-    partial class Form1
+    partial class MainScreen
     {
         /// <summary>
         /// Требуется переменная конструктора.
@@ -28,21 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.RdBxCross = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
-            // Form1
+            // RdBxCross
+            // 
+            this.RdBxCross.AutoSize = true;
+            this.RdBxCross.Location = new System.Drawing.Point(803, 354);
+            this.RdBxCross.Name = "RdBxCross";
+            this.RdBxCross.Size = new System.Drawing.Size(51, 17);
+            this.RdBxCross.TabIndex = 0;
+            this.RdBxCross.TabStop = true;
+            this.RdBxCross.Text = "Cross";
+            this.RdBxCross.UseVisualStyleBackColor = true;
+            // 
+            // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 273);
-            this.Name = "Form1";
+            this.ClientSize = new System.Drawing.Size(900, 438);
+            this.Controls.Add(this.RdBxCross);
+            this.Name = "MainScreen";
             this.Text = "Form1";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainScreen_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.RadioButton RdBxCross;
     }
 }
 
