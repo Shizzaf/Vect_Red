@@ -33,5 +33,11 @@ namespace Kuznetsova
                 p.DrawWith(e.Graphics, pM);
             }
         }
+
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
+            Shapes.Clear();
+            this.Refresh();
+        }
     }
 }

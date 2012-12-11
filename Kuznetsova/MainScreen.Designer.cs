@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.RdBxCross = new System.Windows.Forms.RadioButton();
+            this.BtnClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // RdBxCross
@@ -42,11 +43,22 @@
             this.RdBxCross.Text = "Cross";
             this.RdBxCross.UseVisualStyleBackColor = true;
             // 
+            // BtnClear
+            // 
+            this.BtnClear.Location = new System.Drawing.Point(803, 403);
+            this.BtnClear.Name = "BtnClear";
+            this.BtnClear.Size = new System.Drawing.Size(75, 23);
+            this.BtnClear.TabIndex = 1;
+            this.BtnClear.Text = "Clear";
+            this.BtnClear.UseVisualStyleBackColor = true;
+            this.BtnClear.Click += new System.EventHandler(this.BtnClear_Click);
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 438);
+            this.Controls.Add(this.BtnClear);
             this.Controls.Add(this.RdBxCross);
             this.Name = "MainScreen";
             this.Text = "Form1";
@@ -60,6 +72,7 @@
         #endregion
 
         private System.Windows.Forms.RadioButton RdBxCross;
+        private System.Windows.Forms.Button BtnClear;
     }
 }
 
