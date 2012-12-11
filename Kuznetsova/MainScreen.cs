@@ -19,7 +19,7 @@ namespace Kuznetsova
             InitializeComponent();
         }
 
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        private void MainScreen_MouseDown(object sender, MouseEventArgs e)
         {
             this.Text = Convert.ToString(e.X) + ' ' + Convert.ToString(e.Y);
             Shapes.Add(new Cross(e.X, e.Y));
