@@ -20,6 +20,13 @@ namespace Kuznetsova
             X = _X;
             Y = _Y;
         }
+        public Cross(StreamReader sr)
+        {
+            String CrossSt = sr.ReadLine();
+            string[] foo = CrossSt.Split(' ');
+            X = Convert.ToInt16(foo[0]);
+            Y = Convert.ToInt16(foo[1]);
+        }
         public override void DrawWith(Graphics g, Pen p)
         {
             g.DrawLine(p, X - 3, Y - 3, X + 3, Y + 3);
@@ -41,6 +48,17 @@ namespace Kuznetsova
             S = _S;
             F = _F;
         }
+        public Line(StreamReader sr)
+        {
+            String LineSt = sr.ReadLine();
+            string[] foo = LineSt.Split(' ');
+            S.X = Convert.ToInt16(foo[0]);
+            S.Y = Convert.ToInt16(foo[1]);
+            String LineSt2 = sr.ReadLine();
+            string[] foo2 = LineSt2.Split(' ');
+            F.X = Convert.ToInt16(foo2[0]);
+            F.Y = Convert.ToInt16(foo2[1]);
+        }
         public override void DrawWith(Graphics g, Pen p)
         {
             g.DrawLine(p, S.X, S.Y, F.X, F.Y);
@@ -61,6 +79,17 @@ namespace Kuznetsova
         {
             S = _S;
             F = _F;
+        }
+        public Circle(StreamReader sr)
+        {
+            String LineSt = sr.ReadLine();
+            string[] foo = LineSt.Split(' ');
+            this.S.X = Convert.ToInt16(foo[0]);
+            this.S.Y = Convert.ToInt16(foo[1]);
+            String LineSt2 = sr.ReadLine();
+            string[] foo2 = LineSt2.Split(' ');
+            this.F.X = Convert.ToInt16(foo2[0]);
+            this.F.Y = Convert.ToInt16(foo2[1]);
         }
         private float Radius
         {

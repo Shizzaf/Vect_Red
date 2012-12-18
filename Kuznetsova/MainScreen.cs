@@ -20,7 +20,10 @@ namespace Kuznetsova
         {
             InitializeComponent();
         }
-
+        private void AddShape(Shapes shape)
+        {
+            Shapes.Add(shape);
+        }
         private void MainScreen_MouseDown(object sender, MouseEventArgs e)
         {
             this.Text = Convert.ToString(e.X) + ' ' + Convert.ToString(e.Y);
@@ -90,6 +93,45 @@ namespace Kuznetsova
                 sw.Close();
             }
             isShapeStart = true;
+        }
+
+        private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String curFile = "test.txt";
+            Shapes.Clear();
+            if (OpenDialog.ShowDialog() == DialogResult.OK)
+            {
+                curFile = OpenDialog.FileName;
+                StreamReader sr = new StreamReader(curFile);
+                while (!sr.EndOfStream)
+                {
+                    string type = sr.ReadLine();
+                    switch (type)
+                    {
+                        case "Cross":
+                            {
+                                Shapes.Add(new Cross(sr));
+                                break;
+                            }
+                        case "Line":
+                            {
+                                Shapes.Add(new Line(sr));
+                                break;
+                            }
+                        case "Circle":
+                            {
+                                Shapes.Add(new Circle(sr));
+                                break;
+                            }
+                        case "":
+                            {
+                                break;
+                            }
+                    }
+                    this.Refresh();
+                }
+                sr.Close();
+            }    
         }
     }
 }
