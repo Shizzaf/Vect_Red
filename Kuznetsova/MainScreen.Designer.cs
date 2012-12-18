@@ -65,13 +65,14 @@
             this.опрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveDialog = new System.Windows.Forms.SaveFileDialog();
             this.OpenDialog = new System.Windows.Forms.OpenFileDialog();
+            this.ShapesList = new System.Windows.Forms.ListBox();
             this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // RdBxCross
             // 
             this.RdBxCross.AutoSize = true;
-            this.RdBxCross.Location = new System.Drawing.Point(803, 334);
+            this.RdBxCross.Location = new System.Drawing.Point(825, 290);
             this.RdBxCross.Name = "RdBxCross";
             this.RdBxCross.Size = new System.Drawing.Size(51, 17);
             this.RdBxCross.TabIndex = 0;
@@ -82,7 +83,7 @@
             // 
             // BtnClear
             // 
-            this.BtnClear.Location = new System.Drawing.Point(803, 403);
+            this.BtnClear.Location = new System.Drawing.Point(825, 359);
             this.BtnClear.Name = "BtnClear";
             this.BtnClear.Size = new System.Drawing.Size(75, 23);
             this.BtnClear.TabIndex = 1;
@@ -93,7 +94,7 @@
             // RdBxLine
             // 
             this.RdBxLine.AutoSize = true;
-            this.RdBxLine.Location = new System.Drawing.Point(803, 357);
+            this.RdBxLine.Location = new System.Drawing.Point(825, 313);
             this.RdBxLine.Name = "RdBxLine";
             this.RdBxLine.Size = new System.Drawing.Size(45, 17);
             this.RdBxLine.TabIndex = 2;
@@ -105,7 +106,7 @@
             // RdBxCircle
             // 
             this.RdBxCircle.AutoSize = true;
-            this.RdBxCircle.Location = new System.Drawing.Point(803, 380);
+            this.RdBxCircle.Location = new System.Drawing.Point(825, 336);
             this.RdBxCircle.Name = "RdBxCircle";
             this.RdBxCircle.Size = new System.Drawing.Size(51, 17);
             this.RdBxCircle.TabIndex = 3;
@@ -355,11 +356,21 @@
             // 
             this.OpenDialog.FileName = "openFileDialog1";
             // 
+            // ShapesList
+            // 
+            this.ShapesList.FormattingEnabled = true;
+            this.ShapesList.Location = new System.Drawing.Point(0, 27);
+            this.ShapesList.Name = "ShapesList";
+            this.ShapesList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.ShapesList.Size = new System.Drawing.Size(308, 355);
+            this.ShapesList.TabIndex = 5;
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 438);
+            this.ClientSize = new System.Drawing.Size(900, 379);
+            this.Controls.Add(this.ShapesList);
             this.Controls.Add(this.RdBxCircle);
             this.Controls.Add(this.RdBxLine);
             this.Controls.Add(this.BtnClear);
@@ -416,6 +427,7 @@
         private System.Windows.Forms.ToolStripMenuItem опрограммеToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog SaveDialog;
         private System.Windows.Forms.OpenFileDialog OpenDialog;
+        private System.Windows.Forms.ListBox ShapesList;
     }
 }
 

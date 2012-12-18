@@ -33,6 +33,7 @@ namespace Kuznetsova
             {
                 AddShape(tempShape);
                 isShapeStart = true;
+                ShapesList.Items.Add("Cross " + Convert.ToString(e.Location));
             }
             else if (RdBxLine.Checked)
             {
@@ -44,6 +45,7 @@ namespace Kuznetsova
                 else
                 {
                     AddShape(tempShape);
+                    ShapesList.Items.Add("Line " + Convert.ToString(ShapeStart) + Convert.ToString(e.Location));
                     isShapeStart = true;
                 }
             }
@@ -57,6 +59,7 @@ namespace Kuznetsova
                 else
                 {
                     AddShape(tempShape);
+                    ShapesList.Items.Add("Circle " + Convert.ToString(ShapeStart) + Convert.ToString(e.Location));
                     isShapeStart = true;
                 }
             }
@@ -80,6 +83,7 @@ namespace Kuznetsova
             Shapes.Clear();
             isShapeStart = true;
             tempShape = null;
+            ShapesList.Items.Clear();
             this.Refresh();
         }
         private void R_CheckedChanged(object sender, EventArgs e)
