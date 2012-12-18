@@ -13,7 +13,8 @@ namespace Kuznetsova
     {
         public List<Shapes> Shapes = new List<Shapes>();
         Pen pM = new Pen(Color.Black);
-        
+        public bool isShapeStart = true;
+        public Point ShapeStart = new Point();
         public MainScreen()
         {
             InitializeComponent();
@@ -22,7 +23,23 @@ namespace Kuznetsova
         private void MainScreen_MouseDown(object sender, MouseEventArgs e)
         {
             this.Text = Convert.ToString(e.X) + ' ' + Convert.ToString(e.Y);
-            Shapes.Add(new Cross(e.X, e.Y));
+            if (RdBxCross.Checked)
+            {
+                Shapes.Add(new Cross(e.X, e.Y));
+            }
+            else if (RdBxLine.Checked)
+            {
+                if (isShapeStart == true)
+                {
+                    isShapeStart = false;
+                    ShapeStart = e.Location;
+                }
+                else
+                {
+                    Shapes.Add(new Line(ShapeStart,e.Location));
+                    isShapeStart = true;
+                }
+            }
             this.Refresh();
         }
 
@@ -37,7 +54,12 @@ namespace Kuznetsova
         private void BtnClear_Click(object sender, EventArgs e)
         {
             Shapes.Clear();
+            isShapeStart = true;
             this.Refresh();
+        }
+        private void R_CheckedChanged(object sender, EventArgs e)
+        {
+            isShapeStart = true;
         }
     }
 }

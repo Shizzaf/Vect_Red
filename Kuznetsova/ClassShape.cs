@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
+
 namespace Kuznetsova
 {
     public abstract class Shapes
@@ -22,6 +23,21 @@ namespace Kuznetsova
         {
             g.DrawLine(p, X - 3, Y - 3, X + 3, Y + 3);
             g.DrawLine(p, X + 3, Y - 3, X - 3, Y + 3);
+        }
+    }
+    public class Line : Shapes
+    {
+        //S - стартовая координата, F - конечная координата 
+        Point S, F;
+        Pen p = new Pen(Color.Black);
+        public Line(Point _S, Point _F)
+        {
+            S = _S;
+            F = _F;
+        }
+        public override void DrawWith(Graphics g, Pen p)
+        {
+            g.DrawLine(p, S.X, S.Y, F.X, F.Y);
         }
     }
 }
