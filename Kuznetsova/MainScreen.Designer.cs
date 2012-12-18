@@ -370,6 +370,7 @@
             this.Text = "MainScreen";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainScreen_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainScreen_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainScreen_MouseMove);
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.ResumeLayout(false);

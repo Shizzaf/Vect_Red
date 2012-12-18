@@ -16,6 +16,8 @@ namespace Kuznetsova
         Pen pM = new Pen(Color.Black);
         public bool isShapeStart = true;
         public Point ShapeStart = new Point();
+        public Shapes tempShape;
+        Pen pTemp = new Pen(Color.Gray);
         public MainScreen()
         {
             InitializeComponent();
@@ -29,7 +31,8 @@ namespace Kuznetsova
             this.Text = Convert.ToString(e.X) + ' ' + Convert.ToString(e.Y);
             if (RdBxCross.Checked)
             {
-                Shapes.Add(new Cross(e.X, e.Y));
+                AddShape(tempShape);
+                isShapeStart = true;
             }
             else if (RdBxLine.Checked)
             {
@@ -40,7 +43,7 @@ namespace Kuznetsova
                 }
                 else
                 {
-                    Shapes.Add(new Line(ShapeStart,e.Location));
+                    AddShape(tempShape);
                     isShapeStart = true;
                 }
             }
@@ -53,7 +56,7 @@ namespace Kuznetsova
                 }
                 else
                 {
-                    Shapes.Add(new Circle(ShapeStart, e.Location));
+                    AddShape(tempShape);
                     isShapeStart = true;
                 }
             }
@@ -62,6 +65,10 @@ namespace Kuznetsova
 
         private void MainScreen_Paint(object sender, PaintEventArgs e)
         {
+            if (tempShape != null)
+            {
+                tempShape.DrawWith(e.Graphics, pTemp);
+            }
             foreach (Shapes p in this.Shapes)
             {
                 p.DrawWith(e.Graphics, pM);
@@ -72,6 +79,7 @@ namespace Kuznetsova
         {
             Shapes.Clear();
             isShapeStart = true;
+            tempShape = null;
             this.Refresh();
         }
         private void R_CheckedChanged(object sender, EventArgs e)
@@ -132,6 +140,33 @@ namespace Kuznetsova
                 }
                 sr.Close();
             }    
+        }
+
+        private void MainScreen_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Text = Convert.ToString(e.X) + ' ' + Convert.ToString(e.Y);
+            Point TempPoint = e.Location;
+            if (RdBxCross.Checked)
+            {
+                tempShape = new Cross(e.X, e.Y);
+                this.Refresh();
+            }
+            else if (RdBxLine.Checked)
+            {
+                if (isShapeStart == false)
+                {
+                    tempShape = new Line(ShapeStart, TempPoint);
+                    this.Refresh();
+                }
+            }
+            else if (RdBxCircle.Checked)
+            {
+                if (isShapeStart == false)
+                {
+                    tempShape = new Circle(ShapeStart, TempPoint);
+                    this.Refresh();
+                }
+            }
         }
     }
 }
