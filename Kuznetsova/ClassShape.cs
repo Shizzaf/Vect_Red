@@ -40,4 +40,27 @@ namespace Kuznetsova
             g.DrawLine(p, S.X, S.Y, F.X, F.Y);
         }
     }
+    public class Circle : Shapes
+    {
+        //S - стартовая координата, F - конечная координата 
+        Point S, F;
+        Pen p = new Pen(Color.Black);
+        public Circle(Point _S, Point _F)
+        {
+            S = _S;
+            F = _F;
+        }
+        private float Radius
+        {
+            get
+            {
+                double Radius = Math.Sqrt(Math.Pow(F.X - S.X, 2) + Math.Pow(F.Y - S.Y, 2));
+                return (float)Radius;
+            }
+        }
+        public override void DrawWith(Graphics g, Pen p)
+        {
+            g.DrawEllipse(p, S.X - Radius, S.Y - Radius, Radius * 2, Radius * 2);
+        }
+    }
 }

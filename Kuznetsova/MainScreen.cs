@@ -40,6 +40,19 @@ namespace Kuznetsova
                     isShapeStart = true;
                 }
             }
+            else if (RdBxCircle.Checked)
+            {
+                if (isShapeStart == true)
+                {
+                    isShapeStart = false;
+                    ShapeStart = e.Location;
+                }
+                else
+                {
+                    Shapes.Add(new Circle(ShapeStart, e.Location));
+                    isShapeStart = true;
+                }
+            }
             this.Refresh();
         }
 

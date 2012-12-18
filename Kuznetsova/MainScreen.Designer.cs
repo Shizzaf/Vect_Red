@@ -31,12 +31,13 @@
             this.RdBxCross = new System.Windows.Forms.RadioButton();
             this.BtnClear = new System.Windows.Forms.Button();
             this.RdBxLine = new System.Windows.Forms.RadioButton();
+            this.RdBxCircle = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // RdBxCross
             // 
             this.RdBxCross.AutoSize = true;
-            this.RdBxCross.Location = new System.Drawing.Point(803, 336);
+            this.RdBxCross.Location = new System.Drawing.Point(803, 334);
             this.RdBxCross.Name = "RdBxCross";
             this.RdBxCross.Size = new System.Drawing.Size(51, 17);
             this.RdBxCross.TabIndex = 0;
@@ -58,7 +59,7 @@
             // RdBxLine
             // 
             this.RdBxLine.AutoSize = true;
-            this.RdBxLine.Location = new System.Drawing.Point(803, 359);
+            this.RdBxLine.Location = new System.Drawing.Point(803, 357);
             this.RdBxLine.Name = "RdBxLine";
             this.RdBxLine.Size = new System.Drawing.Size(45, 17);
             this.RdBxLine.TabIndex = 2;
@@ -67,11 +68,24 @@
             this.RdBxLine.UseVisualStyleBackColor = true;
             this.RdBxLine.CheckedChanged += new System.EventHandler(this.R_CheckedChanged);
             // 
+            // RdBxCircle
+            // 
+            this.RdBxCircle.AutoSize = true;
+            this.RdBxCircle.Location = new System.Drawing.Point(803, 380);
+            this.RdBxCircle.Name = "RdBxCircle";
+            this.RdBxCircle.Size = new System.Drawing.Size(51, 17);
+            this.RdBxCircle.TabIndex = 3;
+            this.RdBxCircle.TabStop = true;
+            this.RdBxCircle.Text = "Circle";
+            this.RdBxCircle.UseVisualStyleBackColor = true;
+            this.RdBxCircle.CheckedChanged += new System.EventHandler(this.R_CheckedChanged);
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 438);
+            this.Controls.Add(this.RdBxCircle);
             this.Controls.Add(this.RdBxLine);
             this.Controls.Add(this.BtnClear);
             this.Controls.Add(this.RdBxCross);
@@ -89,6 +103,7 @@
         private System.Windows.Forms.RadioButton RdBxCross;
         private System.Windows.Forms.Button BtnClear;
         private System.Windows.Forms.RadioButton RdBxLine;
+        private System.Windows.Forms.RadioButton RdBxCircle;
     }
 }
 
