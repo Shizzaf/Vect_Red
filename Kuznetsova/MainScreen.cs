@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Kuznetsova
 {
@@ -72,6 +73,22 @@ namespace Kuznetsova
         }
         private void R_CheckedChanged(object sender, EventArgs e)
         {
+            isShapeStart = true;
+        }
+
+        private void сохранитькакToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String curFile = "test.txt";
+            if (SaveDialog.ShowDialog() == DialogResult.OK)
+            {
+                curFile = SaveDialog.FileName;
+                StreamWriter sw = new StreamWriter(curFile+".txt");
+                foreach (Shapes p in this.Shapes)
+                {
+                    p.SaveTo(sw);
+                }
+                sw.Close();
+            }
             isShapeStart = true;
         }
     }
