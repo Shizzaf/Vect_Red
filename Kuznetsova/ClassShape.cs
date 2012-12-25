@@ -11,31 +11,39 @@ namespace Kuznetsova
     {
         public abstract void DrawWith(Graphics g, Pen p);
         public abstract void SaveTo(StreamWriter sw);
+        public abstract string info {get;}
     }
     public class Cross : Shapes
     {
-        int X, Y;
-        public Cross(int _X, int _Y)
+        Point S;
+        public Cross(Point _S)
         {
-            X = _X;
-            Y = _Y;
+            S = _S;
         }
         public Cross(StreamReader sr)
         {
             String CrossSt = sr.ReadLine();
             string[] foo = CrossSt.Split(' ');
-            X = Convert.ToInt16(foo[0]);
-            Y = Convert.ToInt16(foo[1]);
+            S.X = Convert.ToInt16(foo[0]);
+            S.Y = Convert.ToInt16(foo[1]);
         }
         public override void DrawWith(Graphics g, Pen p)
         {
-            g.DrawLine(p, X - 3, Y - 3, X + 3, Y + 3);
-            g.DrawLine(p, X + 3, Y - 3, X - 3, Y + 3);
+            g.DrawLine(p, S.X - 3, S.Y - 3, S.X + 3, S.Y + 3);
+            g.DrawLine(p, S.X + 3, S.Y - 3, S.X - 3, S.Y + 3);
         }
         public override void SaveTo(StreamWriter sw)
         {
             sw.WriteLine("Cross");
-            sw.WriteLine(Convert.ToString(X) + " " + Convert.ToString(Y));
+            sw.WriteLine(Convert.ToString(S.X) + " " + Convert.ToString(S.Y));
+        }
+        public override string info
+        {
+            get
+            {
+                string info = "Cross " + Convert.ToString(S) + ";";
+                return info;
+            }
         }
     }
     public class Line : Shapes
@@ -69,6 +77,14 @@ namespace Kuznetsova
             sw.WriteLine(Convert.ToString(S.X) + " " + Convert.ToString(S.Y));
             sw.WriteLine(Convert.ToString(F.X) + " " + Convert.ToString(F.Y));
         }
+        public override string info
+        {
+            get
+            {
+                string info = "Line first: " + Convert.ToString(S) + ", second: " + Convert.ToString(F) + ";";
+                return info;
+            }
+        }
     }
     public class Circle : Shapes
     {
@@ -97,6 +113,14 @@ namespace Kuznetsova
             {
                 double Radius = Math.Sqrt(Math.Pow(F.X - S.X, 2) + Math.Pow(F.Y - S.Y, 2));
                 return (float)Radius;
+            }
+        }
+        public override string info
+        {
+            get
+            {
+                string info = "Circle R=" + Convert.ToString(Radius)+", center: "+Convert.ToString(S)+";";
+                return info;
             }
         }
         public override void DrawWith(Graphics g, Pen p)

@@ -26,6 +26,7 @@ namespace Kuznetsova
         private void AddShape(Shapes shape)
         {
             Shapes.Add(shape);
+            ShapesList.Items.Add(shape.info);
         }
         private void MainScreen_MouseDown(object sender, MouseEventArgs e)
         {
@@ -34,11 +35,10 @@ namespace Kuznetsova
             {
                 AddShape(tempShape);
                 isShapeStart = true;
-                ShapesList.Items.Add("Cross " + Convert.ToString(e.Location));
             }
-            else if (RdBxLine.Checked)
+            else 
             {
-                if (isShapeStart == true)
+                if (isShapeStart)
                 {
                     isShapeStart = false;
                     ShapeStart = e.Location;
@@ -46,21 +46,6 @@ namespace Kuznetsova
                 else
                 {
                     AddShape(tempShape);
-                    ShapesList.Items.Add("Line " + Convert.ToString(ShapeStart) + Convert.ToString(e.Location));
-                    isShapeStart = true;
-                }
-            }
-            else if (RdBxCircle.Checked)
-            {
-                if (isShapeStart == true)
-                {
-                    isShapeStart = false;
-                    ShapeStart = e.Location;
-                }
-                else
-                {
-                    AddShape(tempShape);
-                    ShapesList.Items.Add("Circle " + Convert.ToString(ShapeStart) + Convert.ToString(e.Location));
                     isShapeStart = true;
                 }
             }
@@ -73,13 +58,13 @@ namespace Kuznetsova
             {
                 tempShape.DrawWith(e.Graphics, pTemp);
             }
-            foreach (int i in ShapesList.SelectedIndices)
-            {
-                Shapes[i].DrawWith(e.Graphics, pCh);
-            }
             foreach (Shapes p in this.Shapes)
             {
                 p.DrawWith(e.Graphics, pM);
+            }
+            foreach (int i in ShapesList.SelectedIndices)
+            {
+                Shapes[i].DrawWith(e.Graphics, pCh);
             }
         }
 
@@ -114,7 +99,7 @@ namespace Kuznetsova
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String curFile = "test.txt";
+            String curFile;
             Shapes.Clear();
             if (OpenDialog.ShowDialog() == DialogResult.OK)
             {
@@ -157,7 +142,7 @@ namespace Kuznetsova
             Point TempPoint = e.Location;
             if (RdBxCross.Checked)
             {
-                tempShape = new Cross(e.X, e.Y);
+                tempShape = new Cross(e.Location);
                 this.Refresh();
             }
             else if (RdBxLine.Checked)
