@@ -18,6 +18,7 @@ namespace Kuznetsova
         public Point ShapeStart = new Point();
         public Shapes tempShape;
         Pen pTemp = new Pen(Color.Gray);
+        Pen pCh = new Pen(Color.Red, 2);
         public MainScreen()
         {
             InitializeComponent();
@@ -71,6 +72,10 @@ namespace Kuznetsova
             if (tempShape != null)
             {
                 tempShape.DrawWith(e.Graphics, pTemp);
+            }
+            foreach (int i in ShapesList.SelectedIndices)
+            {
+                Shapes[i].DrawWith(e.Graphics, pCh);
             }
             foreach (Shapes p in this.Shapes)
             {
@@ -171,6 +176,23 @@ namespace Kuznetsova
                     this.Refresh();
                 }
             }
+        }
+
+        private void BtnDelUnit_Click(object sender, EventArgs e)
+        {
+            while (ShapesList.SelectedIndices.Count > 0)
+            {
+                Shapes.RemoveAt(ShapesList.SelectedIndices[0]);
+                ShapesList.Items.RemoveAt(ShapesList.SelectedIndices[0]);
+            }
+            tempShape = null;
+            Refresh();
+        }
+        private void ShapesList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            isShapeStart = true;
+            tempShape = null;
+            this.Refresh();
         }
     }
 }
