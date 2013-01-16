@@ -15,7 +15,7 @@ namespace Kuznetsova
     }
     public class Cross : Shapes
     {
-        Point S;
+        private Point S;
         public Cross(Point _S)
         {
             S = _S;
@@ -49,8 +49,7 @@ namespace Kuznetsova
     public class Line : Shapes
     {
         //S - стартовая координата, F - конечная координата 
-        Point S, F;
-        Pen p = new Pen(Color.Black);
+        private Point S, F;
         public Line(Point _S, Point _F)
         {
             S = _S;
@@ -89,8 +88,7 @@ namespace Kuznetsova
     public class Circle : Shapes
     {
         //S - стартовая координата, F - конечная координата 
-        Point S, F;
-        Pen p = new Pen(Color.Black);
+        private Point S, F;
         public Circle(Point _S, Point _F)
         {
             S = _S;
