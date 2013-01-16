@@ -139,25 +139,19 @@ namespace Kuznetsova
         private void MainScreen_MouseMove(object sender, MouseEventArgs e)
         {
             this.Text = Convert.ToString(e.X) + ' ' + Convert.ToString(e.Y);
-            Point TempPoint = e.Location;
             if (RdBxCross.Checked)
             {
                 tempShape = new Cross(e.Location);
                 this.Refresh();
             }
-            else if (RdBxLine.Checked)
+            else
             {
                 if (isShapeStart == false)
                 {
-                    tempShape = new Line(ShapeStart, TempPoint);
-                    this.Refresh();
-                }
-            }
-            else if (RdBxCircle.Checked)
-            {
-                if (isShapeStart == false)
-                {
-                    tempShape = new Circle(ShapeStart, TempPoint);
+                    if (RdBxLine.Checked)
+                        tempShape = new Line(ShapeStart, e.Location);
+                    if (RdBxCircle.Checked)
+                        tempShape = new Circle(ShapeStart, e.Location);
                     this.Refresh();
                 }
             }

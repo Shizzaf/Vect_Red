@@ -389,6 +389,7 @@
             this.Controls.Add(this.BtnClear);
             this.Controls.Add(this.RdBxCross);
             this.Controls.Add(this.MenuStrip);
+            this.DoubleBuffered = true;
             this.MainMenuStrip = this.MenuStrip;
             this.Name = "MainScreen";
             this.Text = "MainScreen";
